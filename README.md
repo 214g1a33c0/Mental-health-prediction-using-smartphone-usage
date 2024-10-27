@@ -1,1 +1,2 @@
 # Mental-health-prediction-using-smartphone-usage
+As smartphone usage continues to rise, understanding its effects on mental health becomes increasingly important. Predicting mental health crises through smartphone data can facilitate early intervention strategies. This project focuses on creating a machine learning model that predicts mental health crises by analyzing factors such as screen time, call logs, and message frequency.
