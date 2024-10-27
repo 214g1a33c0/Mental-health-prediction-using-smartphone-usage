@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health Prediction using Smartphone Usage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Predicting Mental Health Crisis Using Smartphone Usage</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="user_id">Name</label>
+                <input type="text" class="form-control" id="user_id" name="user_id" required>
+            </div>
+            <div class="form-group">
+                <label for="screen_time">Screen Time (hours)</label>
+                <input type="number" step="0.01" class="form-control" id="screen_time" name="screen_time" required>
+            </div>
+            <div class="form-group">
+                <label for="call_logs">Number of Calls</label>
+                <input type="number" class="form-control" id="call_logs" name="call_logs" required>
+            </div>
+            <div class="form-group">
+                <label for="message_frequency">Message Frequency</label>
+                <input type="number" class="form-control" id="message_frequency" name="message_frequency" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction_result %}
+            <div id="prediction-result" class="alert alert-info mt-4">
+                <h4>Prediction Result</h4>
+                <p><strong>Name:</strong> {{ user_input.user_id }}</p>
+                <p><strong>Screen Time:</strong> {{ user_input.screen_time }} hours</p>
+                <p><strong>Number of Calls:</strong> {{ user_input.call_logs }}</p>
+                <p><strong>Message Frequency:</strong> {{ user_input.message_frequency }}</p>
+                <hr>
+                <p><strong>Prediction:</strong> {{ prediction_result }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
